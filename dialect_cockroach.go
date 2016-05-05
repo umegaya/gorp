@@ -1,6 +1,7 @@
 package gorp
 
 import (
+	"fmt"
 	"reflect"
 )
 
@@ -57,7 +58,7 @@ func (d CockroachDialect) AutoIncrInsertSuffix(col *ColumnMap) string {
 }
 
 func (d CockroachDialect) InsertAutoIncrToTarget(exec SqlExecutor, insertSql string, target interface{}, params ...interface{}) error {
-	rows, err := exec.query(insertSql, params...)
+	rows, err := exec.Query(insertSql, params...)
 	if err != nil {
 		return err
 	}
